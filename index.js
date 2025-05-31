@@ -92,6 +92,7 @@ const arr = new ArrFreeMan();
 const arr1 = new ArrFreeMan();
 console.log(arr.length);
 arr.addBack(1);
+arr.addBack("22929");
 arr.addBack(2);
 arr.addBack(3);
 arr.unshift(9);

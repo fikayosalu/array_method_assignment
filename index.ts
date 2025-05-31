@@ -1,7 +1,20 @@
-class ArrFreeMan {
-	array: any[] = [];
+// class Arrr<T> {
+// 	array: T[] = [];
 
-	addBack(item: any): any {
+// 	addBack(item: T): T {
+// 		this.array[this.length] = item;
+// 		return item;
+// 	}
+// }
+
+// const p = new Arrr<number>();
+// p.addBack(10);
+// p.addBack("10");
+
+class ArrFreeMan<type> {
+	array: type[] = [];
+
+	addBack(item: type): type {
 		this.array[this.length] = item;
 		return item;
 	}
@@ -14,7 +27,7 @@ class ArrFreeMan {
 		return count;
 	}
 
-	include(item: any) {
+	include(item: type) {
 		for (let x of this.array) {
 			if (x === item) {
 				return true;
@@ -23,7 +36,7 @@ class ArrFreeMan {
 		return false;
 	}
 
-	unshift(item: any): void {
+	unshift(item: type): void {
 		let index: number = this.length;
 		let i: number = this.length - 1;
 		while (index >= 0) {
@@ -37,14 +50,14 @@ class ArrFreeMan {
 		}
 	}
 
-	concat(item: any[]): void {
+	concat(item: type[]): void {
 		for (let x of item) {
 			this.addBack(x);
 		}
 	}
 
-	slice(start: number, stop: number): any {
-		let newArr = new ArrFreeMan();
+	slice(start: number, stop: number): ArrFreeMan<type> {
+		let newArr = new ArrFreeMan<type>();
 
 		while (start < stop) {
 			newArr.addBack(this.array[start]);
@@ -53,7 +66,7 @@ class ArrFreeMan {
 		return newArr;
 	}
 
-	find(call: Function): any {
+	find(call: Function): type | undefined {
 		for (let item of this.array) {
 			if (call(item)) {
 				return item;
@@ -75,8 +88,8 @@ class ArrFreeMan {
 		}
 	}
 
-	filter(call: Function) {
-		let arr: any[] = [];
+	filter(call: Function): void {
+		let arr: type[] = [];
 		let i: number = 0;
 		for (let item of this.array) {
 			if (call(item)) {
@@ -100,6 +113,7 @@ const arr = new ArrFreeMan();
 const arr1 = new ArrFreeMan();
 console.log(arr.length);
 arr.addBack(1);
+arr.addBack("22929");
 arr.addBack(2);
 arr.addBack(3);
 arr.unshift(9);
